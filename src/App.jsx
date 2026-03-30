@@ -843,8 +843,16 @@ const DeviceFrame = ({ children, color = "blue", url = "" }) => {
   // 提取简洁的URL显示
   const displayUrl = url ? url.replace(/^https?:\/\//, '').replace(/\/$/, '') : 'localhost:3000';
   
+  const colorMap = {
+    blue: { border: '#00d4ff', glow: '#00d4ff' },
+    purple: { border: '#a855f7', glow: '#a855f7' },
+    green: { border: '#10b981', glow: '#10b981' },
+    orange: { border: '#f59e0b', glow: '#f59e0b' }
+  };
+  const colors = colorMap[color] || colorMap.blue;
+  
   return (
-    <div className="relative p-4 bg-[#0f0f12] rounded-t-2xl">
+    <div className="relative p-4 bg-[#0f0f12] rounded-t-2xl group-img">
       {/* 设备顶部栏 */}
       <div className="flex items-center gap-2 mb-3 px-2">
         <div className="flex gap-1.5">
@@ -859,13 +867,20 @@ const DeviceFrame = ({ children, color = "blue", url = "" }) => {
         </div>
       </div>
       {/* 屏幕内容 */}
-      <div className={`relative rounded-lg overflow-hidden border-2 ${color === 'blue' ? 'border-[#00d4ff]/30' : color === 'purple' ? 'border-[#a855f7]/30' : 'border-[#10b981]/30'} bg-[#1a1a1f]`}>
+      <div className="relative rounded-lg overflow-hidden border-2 transition-all duration-500"
+           style={{ 
+             borderColor: colors.border + '30',
+             backgroundColor: '#1a1a1f',
+             boxShadow: 'none'
+           }}>
+        {/* 默认阴影遮罩层 */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10 pointer-events-none transition-opacity duration-500 group-img-hover:opacity-0" style={{ opacity: 1 }}></div>
         {children}
-        {/* 屏幕反光效果 */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
+        {/* 悬停时的高亮遮罩 */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-transparent opacity-0 group-img-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
       </div>
       {/* 底部发光条 */}
-      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 ${color === 'blue' ? 'bg-gradient-to-r from-transparent via-[#00d4ff]/50 to-transparent' : color === 'purple' ? 'bg-gradient-to-r from-transparent via-[#a855f7]/50 to-transparent' : 'bg-gradient-to-r from-transparent via-[#10b981]/50 to-transparent'}`}></div>
+      <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-gradient-to-r from-transparent via-[${colors.glow}]/50 to-transparent transition-opacity duration-500 group-img-hover:opacity-100 opacity-0`}></div>
     </div>
   );
 };
@@ -1051,7 +1066,7 @@ const ProjectSection = () => {
         {projects.map((proj, idx) => (
           <div 
             key={idx} 
-            className={`group relative rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 print:break-inside-avoid ${
+            className={`group group-img relative rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 print:break-inside-avoid ${
               proj.color === 'blue' 
                 ? 'hover:shadow-[0_0_40px_rgba(0,212,255,0.15)]' 
                 : proj.color === 'purple'
