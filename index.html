@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>郭玉凯 - 资深研发工程师</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      @font-face {
+        font-family: 'AlimamaShuHeiTi';
+        src: url('./src/font/阿里妈妈数黑体/AlimamaShuHeiTi-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+      }
+      @media print {
+        body {
+          background-color: white !important;
+          color: black !important;
+          font-family: 'AlimamaShuHeiTi', 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+        * {
+          background-color: transparent !important;
+        }
+      }
+      @media screen {
+        body {
+          background-color: #131315;
+          color: #e5e1e4;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased selection:bg-primary/30">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
