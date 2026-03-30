@@ -522,8 +522,8 @@ const SkillsSection = () => {
       icon: Cloud,
       colors: { primary: '#10b981', secondary: '#00d4ff' },
       span: 'md:col-span-5',
-      tags: ["K8s", "Docker", "Terraform", "CI/CD"],
-      desc: "实现Docker容器化与K8s集群管理；构建CI/CD流水线，优化Jenkins与GitLab流程。"
+      tags: ["K8s", "Docker", "Slurm", "Apptainer"],
+      desc: "实现Docker容器化与K8s集群管理；集成Slurm与Apptainer调度容器，实现 HPC 高性能计算任务管理；构建CI/CD流水线，优化Jenkins与GitLab流程。"
     },
     {
       id: 'leadership',
@@ -672,7 +672,7 @@ const ExperienceSection = () => {
       time: "2024.12 - 2025.08",
       company: "中电信量子集团",
       role: "资深后端研发工程师",
-      desc: "主导超量融合调度计算服务的开发与部署，保障平台高并发下的计算稳定性；负责云平台与教研系统的日常开发维护；构建量子智能客服系统，实现智能问答。",
+      desc: "主导超量融合调度计算服务的开发与部署，保障平台高并发下的计算稳定性；负责云平台与教研系统的架构升级与性能优化；构建量子智能客服系统，实现基于RAG的智能问答。",
       points: ["主导超量融合调度计算服务", "保障高并发计算稳定性"]
     },
     {
